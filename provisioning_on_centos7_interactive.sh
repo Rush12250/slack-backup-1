@@ -15,12 +15,12 @@ read DOMAIN
 echo "You entered: $DOMAIN"
 
 # install
-sudo yum install -y gcc gcc-c++ git python python-pip
-sudo yum install -y uwsgi uwsgi-router-http uwsgi-plugin-python
+sudo apt-get install -y gcc gcc-c++ git python python-pip
+sudo  apt-get install -y uwsgi uwsgi-router-http uwsgi-plugin-python
 #sudo yum install -y postgresql-server postgresql-devel
 
 cd /usr/local/src
-sudo git clone https://github.com/menemy/slack-backup.git
+sudo git clone https://github.com/opotemkin/slack-backup.git
 cd slack-backup/
 sudo pip install -r requirements.txt
 
@@ -57,7 +57,7 @@ EOS
 sudo chmod 644 /etc/cron.d/slackbackup
 
 # run
-RUN_SCRIPT="/usr/sbin/uwsgi --ini ${DIR}/uwsgi.ini"
+RUN_SCRIPT="/usr/local/bin/uwsgi --ini ${DIR}/uwsgi.ini"
 sudo chmod 777 /etc/rc.d/rc.local
 echo $RUN_SCRIPT >> /etc/rc.d/rc.local
 sudo chmod 755 /etc/rc.d/rc.local
