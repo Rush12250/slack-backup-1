@@ -26,7 +26,7 @@ Redirect URI(s) is http://\[your_domain\]
 
 ### Download provisioning script
 
-    curl -O https://raw.githubusercontent.com/menemy/slack-backup/master/provisioning_on_centos7.sh
+    curl -O https://raw.githubusercontent.com/opotemkin/slack-backup/master/provisioning_on_centos7.sh
 
 ### Edit provisioning script
 
