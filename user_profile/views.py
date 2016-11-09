@@ -14,9 +14,13 @@ def slack_oauth_login(request):
     state = random_string(10)
 
     request.session['state'] = state
+    # url = 'https://slack.com/oauth/authorize?client_id=' + settings.SLACK_CLIENT_ID + "&state=" + state \
+    #      + "&scope=identify%20channels:history%20channels:read%20users:read%20usergroups:read&redirect_uri=" + settings.DOMAIN + "/slack-oauth/callback"
+    # return HttpResponseRedirect(url)
+
     url = 'https://slack.com/oauth/authorize?client_id=' + settings.SLACK_CLIENT_ID + "&state=" + state \
-          + "&scope=identify%20channels:history%20channels:read%20users:read%20usergroups:read&redirect_uri=" + settings.DOMAIN + "/slack-oauth/callback"
-    return HttpResponseRedirect(url)
+              + "&scope=read&redirect_uri=" + settings.DOMAIN + "/slack-oauth/callback"
+        return HttpResponseRedirect(url)
 
 
 def logout_view(request):
