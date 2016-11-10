@@ -20,7 +20,7 @@ def crawl_all_channel(user):
     url = "https://slack.com/api/groups.list?token=" + user.slack_access_token
     r = requests.get(url)
 
-    groups = []
+    groups = parse_channel(user, json.loads(r.content)['groups'], True)
 
     return channels, groups
 
@@ -106,13 +106,14 @@ class Channel(models.Model):
         logger = logging.getLogger(__name__)
 
         if self.get_creator() is None:
-            # TODO improve, should use token of admin user
-            print "Can't get creator for channel - " + self.name
             return
-        else:
-            token = self.get_creator().slack_access_token
 
-        print "Parse channel: " + self.name
+        if self.is_privategroup == False:
+            url = 'https://slack.com/api/channels.history'
+        else:
+            url = 'https://slack.com/api/groups.history'
+
+        url += "?token=" + self.get_creator().slack_access_token
         epoch = datetime.fromtimestamp(0)
 
         if self.oldest_crawled is None:
