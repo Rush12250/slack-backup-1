@@ -122,14 +122,6 @@ class Channel(models.Model):
             self.save()
 
         while self.oldest_crawled > epoch:
-
-            if self.is_privategroup == False:
-                url = 'https://slack.com/api/channels.history'
-            else:
-                url = 'https://slack.com/api/groups.history'
-
-            url += "?token=" + token
-
             url += "&channel=" + self.slack_id
             url += "&latest=" +  format(self.oldest_crawled, u'U') 
 
@@ -149,8 +141,6 @@ class Channel(models.Model):
                 else:
                     self.oldest_crawled = datetime.fromtimestamp(0)
 
-
-
                 add_messages(messages, self)
 
 
@@ -166,8 +156,6 @@ class Channel(models.Model):
                 url = 'https://slack.com/api/channels.history'
             else:
                 url = 'https://slack.com/api/groups.history'
-
-            url += "?token=" + token
 
             url += "&channel=" + self.slack_id
             url += "&oldest=" + format(self.latest_crawled, u'U') 
