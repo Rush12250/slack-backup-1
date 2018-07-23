@@ -15,12 +15,12 @@ read DOMAIN
 echo "You entered: $DOMAIN"
 
 # install
-sudo apt-get install -y gcc gcc-c++ git python python-pip
-sudo  apt-get install -y uwsgi uwsgi-router-http uwsgi-plugin-python
+sudo yum install -y gcc gcc-c++ git python python-pip
+sudo  yum install -y uwsgi uwsgi-router-http uwsgi-plugin-python
 #sudo yum install -y postgresql-server postgresql-devel
 
 cd /usr/local/src
-sudo git clone https://github.com/opotemkin/slack-backup.git
+sudo git clone https://github.com/Rush12250/slack-backup.git
 cd slack-backup/
 sudo pip install -r requirements.txt
 
