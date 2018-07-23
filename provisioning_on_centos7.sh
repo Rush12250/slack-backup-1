@@ -11,7 +11,7 @@ sudo yum install -y uwsgi uwsgi-router-http uwsgi-plugin-python
 #sudo yum install -y postgresql-server postgresql-devel
 
 cd /usr/local/src
-sudo git clone https://github.com/menemy/slack-backup.git
+sudo git clone https://github.com/Rush12250/slack-backup.git
 cd slack-backup/
 sudo pip install -r requirements.txt
 
